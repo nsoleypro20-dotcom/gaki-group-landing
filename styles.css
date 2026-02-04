@@ -1,22 +1,27 @@
 /* ======================================
-   GAKI GROUP – LANDING PAGE PRO CSS
+   GAKI GROUP – LANDING PAGE PRO CSS HARMONISE
 ====================================== */
 
 /* ================================
-   VARIABLES – CHARTE GAKI GROUP
+   VARIABLES – CHARTE GAKI GROUP HARMONISEE
 ================================ */
 :root {
-    --gaki-purple: #58337F;
-    --gaki-red: #C1272D;
-    --gaki-black: #000000;
+    --gaki-purple: #4A2C7F; /* violet principal plus profond */
+    --gaki-purple-light: #6B46C1; /* violet clair pour accents */
+    --gaki-red: #DC2626; /* rouge plus vibrant */
+    --gaki-red-dark: #B91C1C; /* rouge foncé pour contrastes */
+    --gaki-black: #1F2937; /* gris foncé au lieu du noir pur */
     --gaki-white: #FFFFFF;
-    --gaki-gray-light: #F8F9FA;
-    --gaki-gray: #E9ECEF;
+    --gaki-gray-light: #F9FAFB; /* fond très léger */
+    --gaki-gray: #E5E7EB; /* gris moyen */
+    --gaki-gray-dark: #9CA3AF; /* gris foncé pour textes */
+    --gaki-accent: #F59E0B; /* jaune doré pour touches d'accent */
+    --gaki-success: #10B981; /* vert pour succès */
     --font-body: 'Arial', sans-serif;
 }
 
 /* ================================
-   TYPOGRAPHIE
+   TYPOGRAPHIE OFFICIELLE
 ================================ */
 .font-title {
     font-family: 'Montserrat', sans-serif;
@@ -30,7 +35,25 @@
 }
 
 .font-body {
-    font-family: var(--font-body);
+    font-family: 'Arial', sans-serif;
+    font-weight: 400;
+}
+
+/* Hiérarchie typographique validée */
+h1, h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+h3, h4 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+}
+
+body, p, span, div {
+    font-family: 'Arial', sans-serif;
+    font-weight: 400;
 }
 
 /* ================================
@@ -51,8 +74,8 @@ body {
 ================================ */
 .hero-bg {
     background:
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url("images/Violet.jpg") center / cover no-repeat;
+       linear-gradient(135deg, rgba(74, 44, 127, 0.8) 0%, rgba(107, 70, 193, 0.6) 100%),
+       url("images/Violet.jpg") center / cover no-repeat;
     position: relative;
     overflow: hidden;
     min-height: 90vh;
@@ -63,35 +86,60 @@ body {
     color: var(--gaki-white);
 }
 
+.hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.3) 100%);
+}
+
 .hero-bg h1 {
     font-size: clamp(2.5rem, 6vw, 5rem);
+    color: var(--gaki-white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
 }
 
 .hero-bg h2 {
     font-size: clamp(1.25rem, 2.5vw, 2rem);
     margin: 1rem 0;
+    color: var(--gaki-gray);
+    position: relative;
+    z-index: 1;
 }
 
 .hero-bg p {
     font-size: 1.1rem;
     margin-bottom: 2rem;
+    color: var(--gaki-white);
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-bg a {
     display: inline-block;
-    background-color: var(--gaki-red);
+    background: linear-gradient(135deg, var(--gaki-red) 0%, var(--gaki-red-dark) 100%);
     color: var(--gaki-white);
-    padding: 0.9rem 2rem;
-    border-radius: 8px;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+    position: relative;
+    z-index: 1;
 }
 
 .hero-bg a:hover {
-    background-color: var(--gaki-purple);
-    transform: translateY(-2px);
+    background: linear-gradient(135deg, var(--gaki-purple) 0%, var(--gaki-purple-light) 100%);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(74, 44, 127, 0.4);
 }
 
 /* ================================
@@ -102,17 +150,22 @@ section {
 }
 
 section:nth-child(even) {
-    background-color: var(--gaki-gray-light);
+    background: linear-gradient(135deg, var(--gaki-gray-light) 0%, #f0f4f8 100%);
+}
+
+section:nth-child(odd) {
+    background: linear-gradient(135deg, var(--gaki-white) 0%, #fefefe 100%);
 }
 
 section > div {
-    background-color: var(--gaki-white);
-    border-radius: 16px;
+    background: linear-gradient(135deg, var(--gaki-white) 0%, #fafbfc 100%);
+    border-radius: 24px;
     padding: 3rem;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 40px rgba(74, 44, 127, 0.1);
     position: relative;
     animation: fadeUp 0.8s ease-out forwards;
     opacity: 0;
+    border: 1px solid rgba(229, 231, 235, 0.5);
 }
 
 /* ================================
@@ -122,50 +175,84 @@ h1, h2, h3 {
     letter-spacing: -0.02em;
 }
 
-h2, h3 {
+h2 {
     color: var(--gaki-purple);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gaki-red) 0%, var(--gaki-purple) 100%);
+    border-radius: 2px;
 }
 
 h3 {
+    color: var(--gaki-purple);
     display: inline-block;
     padding-bottom: 0.5rem;
     border-bottom: 4px solid var(--gaki-red);
     margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 /* ================================
    FILIALES – CARTES AVEC HOVER
 ================================ */
-ul.grid li {
+.filiale-card {
     position: relative;
-    background-color: var(--gaki-purple);
+    background: linear-gradient(135deg, var(--gaki-purple), var(--gaki-red));
     color: var(--gaki-white);
-    padding: 2rem 1rem;
-    border-radius: 16px;
-    font-weight: 600;
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+    font-weight: 700;
     text-align: center;
     cursor: pointer;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    font-size: 1.1rem;
 }
 
-ul.grid li h4 {
+.filiale-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.filiale-card:hover::before {
+    left: 100%;
+}
+
+.filiale-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.filiale-card h4 {
     position: relative;
     z-index: 1;
     color: var(--gaki-white) !important;
 }
 
-ul.grid li:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 45px rgba(255, 255, 255, 0.35);
-    background: linear-gradient(135deg, var(--gaki-purple), var(--gaki-red));
-}
-
 /* Overlay text au hover */
-ul.grid li .overlay {
+.filiale-card .overlay {
     position: absolute;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(88, 51, 127, 0.9);
     color: var(--gaki-white);
     display: none;
     flex-direction: column;
@@ -173,68 +260,91 @@ ul.grid li .overlay {
     align-items: center;
     padding: 1rem;
     text-align: center;
-    border-radius: 16px;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-ul.grid li:hover .overlay {
+.filiale-card:hover .overlay {
     display: flex;
+    opacity: 1;
 }
 
 /* ================================
    DOMAINES D’ACTIVITÉ
 ================================ */
-.grid.grid-cols-1.md\:grid-cols-2 > div {
-    background: var(--gaki-white);
+.activity-card {
+    background: linear-gradient(135deg, #f5f2fa, #f8f7fb);
     padding: 2.5rem;
-    border-radius: 16px;
+    border-radius: 20px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.4s ease;
+    border: 1px solid #e2e8f0;
+    position: relative;
+    overflow: hidden;
 }
 
-.grid.grid-cols-1.md\:grid-cols-2 > div:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(88, 51, 127, 0.25);
+.activity-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(88, 51, 127, 0.05), transparent);
+    transition: left 0.6s;
 }
 
-.grid.grid-cols-1.md\:grid-cols-2 h4 {
+.activity-card:hover::before {
+    left: 100%;
+}
+
+.activity-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(88, 51, 127, 0.2);
+}
+
+.activity-card h3 {
     color: var(--gaki-purple);
     margin-bottom: 1rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+.activity-card p {
+    color: var(--gaki-black);
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
 }
 
 /* ================================
    FORMULAIRE
 ================================ */
-form {
-    background: var(--gaki-white);
-    padding: 3rem;
-    border-radius: 16px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-    max-width: 500px;
-    margin: auto;
-}
-
-form input,
-form textarea {
+.form-input {
     width: 100%;
-    border: 1.5px solid #D1D5DB;
-    border-radius: 10px;
-    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.2rem;
     margin-bottom: 1.5rem;
     font-size: 1rem;
     transition: all 0.3s ease;
+    background: #f5f2fa;
+    color: var(--gaki-black);
 }
 
-form input:focus,
-form textarea:focus {
+.form-input:focus {
     outline: none;
     border-color: var(--gaki-purple);
-    box-shadow: 0 0 0 4px rgba(88, 51, 127, 0.12);
+    box-shadow: 0 0 0 4px rgba(88, 51, 127, 0.15);
+    background: var(--gaki-white);
 }
 
-form button {
+.btn-primary {
     width: 100%;
-    padding: 1rem;
-    background-color: var(--gaki-red);
+    padding: 1.2rem;
+    background: linear-gradient(135deg, var(--gaki-red), var(--gaki-purple));
     color: var(--gaki-white);
     font-weight: 700;
     border-radius: 12px;
@@ -242,69 +352,47 @@ form button {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     transition: all 0.3s ease;
+    border: none;
+    position: relative;
+    overflow: hidden;
 }
 
-form button:hover {
-    background-color: var(--gaki-purple);
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(193, 39, 45, 0.35);
+    box-shadow: 0 15px 35px rgba(193, 39, 45, 0.4);
 }
 
 /* ================================
    FOOTER
 ================================ */
 footer {
-    background-color: var(--gaki-black);
+    background-color: var(--gaki-purple);
     color: var(--gaki-white);
     padding: 3rem 2rem;
     text-align: center;
 }
 
 /* ================================
-   UTILS (CUSTOM TAILWIND-LIKE)
-================================ */
-.bg-gaki-red {
-    background-color: var(--gaki-red);
-}
-
-.bg-gaki-purple {
-    background-color: var(--gaki-purple);
-}
-
-.text-gaki-red {
-    color: var(--gaki-red);
-}
-
-.text-gaki-purple {
-    color: var(--gaki-purple);
-}
-
-.hover\:bg-gaki-purple:hover {
-    background-color: var(--gaki-purple);
-}
-
-.focus\:ring-gaki-purple:focus {
-    border-color: var(--gaki-purple);
-    box-shadow: 0 0 0 4px rgba(88, 51, 127, 0.2);
-}
-
-/* ================================
    ANIMATION
 ================================ */
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.animate-fadeIn {
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fadeUp {
@@ -312,51 +400,34 @@ footer {
     animation: fadeUp 0.8s ease-out forwards;
 }
 
-.delay-200 {
-    animation-delay: 0.2s;
-}
-
-.delay-400 {
-    animation-delay: 0.4s;
-}
-
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+.animation-delay-300 {
+    animation-delay: 0.3s;
 }
 
 /* ================================
    RESPONSIVE
 ================================ */
 @media (max-width: 1024px) {
-    section {
-        padding: 4rem 1.5rem;
-    }
-    section > div {
-        padding: 2.5rem;
-    }
+    section { padding: 4rem 1.5rem; }
+    section > div { padding: 2.5rem; }
 }
 
 @media (max-width: 768px) {
-    .hero-bg h1 {
-        font-size: 2.5rem;
-    }
-    .hero-bg h2 {
-        font-size: 1.25rem;
-    }
+    .hero-bg h1 { font-size: 2.5rem; }
+    .hero-bg h2 { font-size: 1.25rem; }
 }
 
 @media (max-width: 480px) {
-    section {
-        padding: 3rem 1rem;
-    }
-    form {
-        padding: 2rem;
-    }
+    section { padding: 3rem 1rem; }
+    form { padding: 2rem; }
 }
