@@ -1,0 +1,374 @@
+/* ======================================
+   GAKI GROUP – LANDING PAGE PRO CSS
+====================================== */
+
+/* ================================
+   VARIABLES – CHARTE GAKI GROUP
+================================ */
+:root {
+    --gaki-purple: #58337F;
+    --gaki-red: #C1272D;
+    --gaki-black: #000000;
+    --gaki-white: #FFFFFF;
+    --gaki-gray-light: #F8F9FA;
+    --gaki-gray: #E9ECEF;
+    --font-body: 'Arial', sans-serif;
+}
+
+/* ================================
+   TYPOGRAPHIE
+================================ */
+.font-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.font-subtitle {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+}
+
+.font-body {
+    font-family: 'Arial', sans-serif;
+}
+
+/* ================================
+   UTILS (CUSTOM TAILWIND-LIKE)
+================================ */
+.bg-gaki-red {
+    background-color: var(--gaki-red);
+}
+
+.bg-gaki-purple {
+    background-color: var(--gaki-purple);
+}
+
+.text-gaki-red {
+    color: var(--gaki-red);
+}
+
+.text-gaki-purple {
+    color: var(--gaki-purple);
+}
+
+.hover\:bg-gaki-purple:hover {
+    background-color: var(--gaki-purple);
+}
+
+.focus\:ring-gaki-purple:focus {
+    border-color: var(--gaki-purple);
+    box-shadow: 0 0 0 4px rgba(88, 51, 127, 0.2);
+}
+
+/* ================================
+   GLOBAL
+================================ */
+body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+    font-family: var(--font-body);
+    color: var(--gaki-black);
+    background-color: var(--gaki-gray-light);
+    scroll-behavior: smooth;
+}
+
+/* ================================
+   HERO SECTION
+================================ */
+.hero-bg {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("images/Violet.jpg") center / cover no-repeat;
+    position: relative;
+    overflow: hidden;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--gaki-white);
+}
+
+.hero-bg h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+}
+
+.hero-bg h2 {
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    margin: 1rem 0;
+}
+
+.hero-bg p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.hero-bg a {
+    display: inline-block;
+    background-color: var(--gaki-red);
+    color: var(--gaki-white);
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+
+.hero-bg a:hover {
+    background-color: var(--gaki-purple);
+    transform: translateY(-2px);
+}
+
+/* ================================
+   SECTIONS – STRUCTURE
+================================ */
+section {
+    padding: 6rem 2rem;
+}
+
+section:nth-child(even) {
+    background-color: var(--gaki-gray-light);
+}
+
+section > div {
+    background-color: var(--gaki-white);
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    position: relative;
+    animation: fadeUp 0.7s ease-out forwards;
+    opacity: 0;
+}
+
+/* ================================
+   TITRES
+================================ */
+h1, h2, h3 {
+    letter-spacing: -0.02em;
+}
+
+h2, h3 {
+    color: var(--gaki-purple);
+}
+
+h3 {
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    border-bottom: 4px solid var(--gaki-red);
+    margin-bottom: 2rem;
+}
+
+/* ================================
+   FILIALES – CARTES AVEC HOVER
+================================ */
+ul.grid li {
+    position: relative;
+    background-color: var(--gaki-purple);
+    color: var(--gaki-white);
+    padding: 2rem 1rem;
+    border-radius: 16px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+ul.grid li:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(255, 255, 255, 0.35);
+    background: linear-gradient(135deg, var(--gaki-purple), var(--gaki-red));
+}
+
+/* Overlay text + image au hover */
+ul.grid li .overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--gaki-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+}
+
+ul.grid li:hover .overlay {
+    opacity: 1;
+}
+
+ul.grid li .overlay img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    margin-top: 1rem;
+    transition: transform 0.3s ease;
+}
+
+ul.grid li:hover .overlay img {
+    transform: scale(1.1);
+}
+
+/* ================================
+   DOMAINES D’ACTIVITÉ
+================================ */
+.grid.grid-cols-1.md\:grid-cols-2 > div {
+    background: var(--gaki-white);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid.grid-cols-1.md\:grid-cols-2 > div:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(88, 51, 127, 0.25);
+}
+
+.grid.grid-cols-1.md\:grid-cols-2 h4 {
+    color: var(--gaki-purple);
+    margin-bottom: 1rem;
+}
+
+/* ================================
+   FORMULAIRE
+================================ */
+form {
+    background: var(--gaki-white);
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    max-width: 500px;
+    margin: auto;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    border: 1.5px solid #D1D5DB;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+    outline: none;
+    border-color: var(--gaki-purple);
+    box-shadow: 0 0 0 4px rgba(88, 51, 127, 0.12);
+}
+
+form button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--gaki-red);
+    color: var(--gaki-white);
+    font-weight: 700;
+    border-radius: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+
+form button:hover {
+    background-color: var(--gaki-purple);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(193, 39, 45, 0.35);
+}
+
+/* ================================
+   FOOTER
+================================ */
+footer {
+    background-color: var(--gaki-black);
+    color: var(--gaki-white);
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+/* ================================
+   ANIMATION
+================================ */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeIn {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+.animate-fadeUp {
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out forwards;
+}
+
+.delay-200 {
+    animation-delay: 0.2s;
+}
+
+.delay-400 {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section > div {
+    animation: fadeUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 1024px) {
+    section {
+        padding: 4rem 1.5rem;
+    }
+    section > div {
+        padding: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-bg h1 {
+        font-size: 2.5rem;
+    }
+    .hero-bg h2 {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 3rem 1rem;
+    }
+    form {
+        padding: 2rem;
+    }
+}
