@@ -150,15 +150,28 @@ body {
    SECTIONS – STRUCTURE
 ================================ */
 section {
-    padding: 6rem 2rem;
+    padding: 4rem 2rem;
 }
 
 section:nth-child(even) {
-    background: linear-gradient(135deg, rgba(74, 44, 127, 0.03) 0%, rgba(107, 70, 193, 0.02) 100%);
+    background: linear-gradient(135deg, rgba(74, 44, 127, 0.08) 0%, rgba(107, 70, 193, 0.05) 100%);
 }
 
 section:nth-child(odd) {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(249, 250, 251, 0.98) 100%);
+}
+
+/* Sections avec fond violet */
+.bg-violet-bg {
+    background: linear-gradient(135deg, rgba(88, 51, 127, 0.1), rgba(193, 39, 45, 0.05)) !important;
+}
+
+.bg-purple-gradient {
+    background: linear-gradient(135deg, var(--gaki-purple), var(--gaki-red)) !important;
+}
+
+.bg-purple-light {
+    background: linear-gradient(135deg, rgba(88, 51, 127, 0.15), rgba(193, 39, 45, 0.08)) !important;
 }
 
 section > div {
@@ -278,12 +291,12 @@ h3 {
    DOMAINES D’ACTIVITÉ
 ================================ */
 .activity-card {
-    background: linear-gradient(135deg, #f5f2fa, #f8f7fb);
+    background: linear-gradient(135deg, #f5f2fa, #c4b0ff);
     padding: 2.5rem;
     border-radius: 20px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
     transition: all 0.4s ease;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #da7bed;
     position: relative;
     overflow: hidden;
 }
