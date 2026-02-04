@@ -291,12 +291,12 @@ h3 {
    DOMAINES D’ACTIVITÉ
 ================================ */
 .activity-card {
-    background: linear-gradient(135deg, #f5f2fa, #c4b0ff);
+    background: linear-gradient(135deg, #f5f2fa, #f8f7fb);
     padding: 2.5rem;
     border-radius: 20px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
     transition: all 0.4s ease;
-    border: 1px solid #da7bed;
+    border: 1px solid #e2e8f0;
     position: relative;
     overflow: hidden;
 }
