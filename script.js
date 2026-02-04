@@ -4,69 +4,67 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ===== Scroll Smooth pour les ancres =====
+    /* ==============================
+       SMOOTH SCROLL (ANCHORS)
+    ============================== */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', e => {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const target = document.querySelector(anchor.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
         });
     });
 
-    // ===== Animation des sections au scroll =====
-    const sections = document.querySelectorAll('section > div');
-    const observerOptions = { threshold: 0.2 };
-
-    const observer = new IntersectionObserver((entries) => {
+    /* ==============================
+       SCROLL ANIMATIONS
+    ============================== */
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.animation = 'fadeUp 0.8s ease-out forwards';
-                observer.unobserve(entry.target); // pour �viter la r�p�tition
+                entry.target.classList.add('animate-fadeUp');
+                obs.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.2 });
 
-    sections.forEach(section => observer.observe(section));
+    animatedElements.forEach(el => observer.observe(el));
 
-    // ===== Formulaire avec feedback =====
+    /* ==============================
+       CONTACT FORM UX FEEDBACK
+    ============================== */
     const form = document.querySelector('form');
-    if (form) {
-        const successMessage = document.createElement('p');
-        successMessage.textContent = "✅ Merci. Votre message a bien été pris en compte.";
-        successMessage.className = "text-green-600 text-center mt-4 opacity-0 transition-opacity duration-500";
-        form.appendChild(successMessage);
+    if (!form) return;
 
-        form.addEventListener('submit', (e) => {
-            // Empêche l'envoi multiple
-            const submitButton = form.querySelector('button[type="submit"]');
-            submitButton.disabled = true;
+    const submitButton = form.querySelector('button[type="submit"]');
 
-            // Affiche le message
-            successMessage.classList.remove('opacity-0');
-            successMessage.classList.add('opacity-100');
+    const successMessage = document.createElement('p');
+    successMessage.textContent = "✅ Merci. Votre message a bien été pris en compte.";
+    successMessage.className = "text-green-600 text-center mt-4 opacity-0 transition-opacity duration-500";
+    form.appendChild(successMessage);
 
-            // Timeout pour masquer le message après 5 secondes et réactiver le bouton
-            setTimeout(() => {
-                successMessage.classList.remove('opacity-100');
-                successMessage.classList.add('opacity-0');
-                submitButton.disabled = false;
-            }, 5000);
-        });
-    }
+    form.addEventListener('submit', () => {
 
-    // ===== Hover filiales (optionnel) =====
-    const filiales = document.querySelectorAll('ul.grid li');
-    filiales.forEach(filiale => {
-        filiale.addEventListener('mouseenter', () => {
-            filiale.querySelector('.overlay')?.classList.add('opacity-100');
-        });
-        filiale.addEventListener('mouseleave', () => {
-            filiale.querySelector('.overlay')?.classList.remove('opacity-100');
-        });
+        // UX : empêche les doubles clics
+        submitButton.disabled = true;
+        submitButton.classList.add('opacity-60', 'cursor-not-allowed');
+
+        // Affiche feedback
+        successMessage.classList.remove('opacity-0');
+        successMessage.classList.add('opacity-100');
+
+        // Réactivation après 5 secondes
+        setTimeout(() => {
+            submitButton.disabled = false;
+            submitButton.classList.remove('opacity-60', 'cursor-not-allowed');
+            successMessage.classList.remove('opacity-100');
+            successMessage.classList.add('opacity-0');
+        }, 5000);
     });
+
 });
-
-

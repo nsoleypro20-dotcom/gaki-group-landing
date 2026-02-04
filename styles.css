@@ -30,35 +30,7 @@
 }
 
 .font-body {
-    font-family: 'Arial', sans-serif;
-}
-
-/* ================================
-   UTILS (CUSTOM TAILWIND-LIKE)
-================================ */
-.bg-gaki-red {
-    background-color: var(--gaki-red);
-}
-
-.bg-gaki-purple {
-    background-color: var(--gaki-purple);
-}
-
-.text-gaki-red {
-    color: var(--gaki-red);
-}
-
-.text-gaki-purple {
-    color: var(--gaki-purple);
-}
-
-.hover\:bg-gaki-purple:hover {
-    background-color: var(--gaki-purple);
-}
-
-.focus\:ring-gaki-purple:focus {
-    border-color: var(--gaki-purple);
-    box-shadow: 0 0 0 4px rgba(88, 51, 127, 0.2);
+    font-family: var(--font-body);
 }
 
 /* ================================
@@ -139,7 +111,7 @@ section > div {
     padding: 3rem;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
     position: relative;
-    animation: fadeUp 0.7s ease-out forwards;
+    animation: fadeUp 0.8s ease-out forwards;
     opacity: 0;
 }
 
@@ -177,42 +149,35 @@ ul.grid li {
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
+ul.grid li h4 {
+    position: relative;
+    z-index: 1;
+    color: var(--gaki-white) !important;
+}
+
 ul.grid li:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 45px rgba(255, 255, 255, 0.35);
     background: linear-gradient(135deg, var(--gaki-purple), var(--gaki-red));
 }
 
-/* Overlay text + image au hover */
+/* Overlay text au hover */
 ul.grid li .overlay {
     position: absolute;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.7);
     color: var(--gaki-white);
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
     text-align: center;
+    border-radius: 16px;
 }
 
 ul.grid li:hover .overlay {
-    opacity: 1;
-}
-
-ul.grid li .overlay img {
-    width: 64px;
-    height: 64px;
-    object-fit: contain;
-    margin-top: 1rem;
-    transition: transform 0.3s ease;
-}
-
-ul.grid li:hover .overlay img {
-    transform: scale(1.1);
+    display: flex;
 }
 
 /* ================================
@@ -296,6 +261,34 @@ footer {
 }
 
 /* ================================
+   UTILS (CUSTOM TAILWIND-LIKE)
+================================ */
+.bg-gaki-red {
+    background-color: var(--gaki-red);
+}
+
+.bg-gaki-purple {
+    background-color: var(--gaki-purple);
+}
+
+.text-gaki-red {
+    color: var(--gaki-red);
+}
+
+.text-gaki-purple {
+    color: var(--gaki-purple);
+}
+
+.hover\:bg-gaki-purple:hover {
+    background-color: var(--gaki-purple);
+}
+
+.focus\:ring-gaki-purple:focus {
+    border-color: var(--gaki-purple);
+    box-shadow: 0 0 0 4px rgba(88, 51, 127, 0.2);
+}
+
+/* ================================
    ANIMATION
 ================================ */
 @keyframes fadeUp {
@@ -336,11 +329,6 @@ footer {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-section > div {
-    animation: fadeUp 0.8s ease-out forwards;
-    opacity: 0;
 }
 
 /* ================================
