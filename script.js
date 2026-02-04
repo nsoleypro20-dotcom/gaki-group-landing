@@ -36,6 +36,58 @@ document.addEventListener('DOMContentLoaded', () => {
     animatedElements.forEach(el => observer.observe(el));
 
     /* ==============================
+       PARALLAX EFFECT ON HERO
+    ============================== */
+    const heroBg = document.querySelector('.hero-bg');
+    const heroOverlay = document.querySelector('.hero-bg::before');
+
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5; // Adjust the rate for subtlety
+
+        if (heroBg) {
+            heroBg.style.transform = `translateY(${rate * 0.3}px)`;
+        }
+
+        // Apply parallax to the overlay as well
+        const overlay = heroBg.querySelector('::before');
+        if (overlay) {
+            overlay.style.transform = `translateY(${rate * 0.1}px)`;
+        }
+    });
+
+    /* ==============================
+       FORM ANIMATIONS
+    ============================== */
+    const formInputs = document.querySelectorAll('.form-input');
+    formInputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            input.style.transform = 'translateY(-2px)';
+            input.style.boxShadow = '0 8px 20px rgba(74, 44, 127, 0.15)';
+        });
+
+        input.addEventListener('blur', () => {
+            input.style.transform = 'translateY(0)';
+            input.style.boxShadow = '0 0 0 4px rgba(88, 51, 127, 0.15)';
+        });
+    });
+
+    /* ==============================
+       SUBTLE HOVER EFFECTS ON LINKS
+    ============================== */
+    const links = document.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            link.style.transform = 'translateY(-1px)';
+            link.style.transition = 'transform 0.2s ease';
+        });
+
+        link.addEventListener('mouseleave', () => {
+            link.style.transform = 'translateY(0)';
+        });
+    });
+
+    /* ==============================
        CONTACT FORM UX FEEDBACK
     ============================== */
     const form = document.querySelector('form');

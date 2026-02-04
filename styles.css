@@ -84,6 +84,8 @@ body {
     justify-content: center;
     text-align: center;
     color: var(--gaki-white);
+    transform: translateY(0);
+    transition: transform 0.1s ease-out;
 }
 
 .hero-bg::before {
@@ -94,6 +96,8 @@ body {
     right: 0;
     bottom: 0;
     background: radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.3) 100%);
+    transform: translateY(0);
+    transition: transform 0.1s ease-out;
 }
 
 .hero-bg h1 {
