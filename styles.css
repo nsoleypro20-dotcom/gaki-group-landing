@@ -69,8 +69,33 @@ body {
     scroll-behavior: smooth;
 }
 
+/* Image de fond pour la section À propos */
+.about-bg {
+    background-image: url("images/about-gaki.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.about-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(88, 51, 127, 0.4), rgba(193, 39, 45, 0.3));
+    z-index: 1;
+}
+
+.about-bg > * {
+    position: relative;
+    z-index: 2;
+}
+
 /* ================================
-   HERO SECTION
+   HERO SECTION ARTISTIQUE
 ================================ */
 .hero-bg {
     background:
@@ -95,9 +120,32 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.3) 100%);
+    background:
+        radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 20, 147, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.3) 100%);
     transform: translateY(0);
     transition: transform 0.1s ease-out;
+}
+
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.02) 50%, transparent 70%),
+        linear-gradient(-45deg, transparent 30%, rgba(255, 255, 255, 0.02) 50%, transparent 70%);
+    animation: shimmer 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
 }
 
 .hero-bg h1 {
@@ -108,12 +156,18 @@ body {
     z-index: 1;
 }
 
+@keyframes titleGlow {
+    from { filter: brightness(1) drop-shadow(0 0 5px rgba(255, 215, 0, 0.3)); }
+    to { filter: brightness(1.1) drop-shadow(0 0 15px rgba(255, 215, 0, 0.5)); }
+}
+
 .hero-bg h2 {
     font-size: clamp(1.25rem, 2.5vw, 2rem);
     margin: 1rem 0;
     color: var(--gaki-gray);
     position: relative;
     z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-bg p {
@@ -123,6 +177,7 @@ body {
     opacity: 0.9;
     position: relative;
     z-index: 1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hero-bg a {
@@ -134,16 +189,39 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 4px 15px rgba(220, 38, 38, 0.3),
+        0 0 30px rgba(255, 215, 0, 0.2);
     position: relative;
     z-index: 1;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    overflow: hidden;
+}
+
+.hero-bg a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.hero-bg a:hover::before {
+    left: 100%;
 }
 
 .hero-bg a:hover {
     background: linear-gradient(135deg, var(--gaki-purple) 0%, var(--gaki-purple-light) 100%);
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(74, 44, 127, 0.4);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow:
+        0 8px 25px rgba(74, 44, 127, 0.4),
+        0 0 40px rgba(138, 43, 226, 0.3),
+        0 0 60px rgba(255, 215, 0, 0.2);
 }
 
 /* ================================
@@ -222,21 +300,27 @@ h3 {
 }
 
 /* ================================
-   FILIALES – CARTES AVEC HOVER
+   FILIALES – CARTES ARTISTIQUES AVEC IMAGES
 ================================ */
 .filiale-card {
     position: relative;
     background: linear-gradient(135deg, var(--gaki-purple), var(--gaki-red));
     color: var(--gaki-white);
     padding: 2.5rem 1.5rem;
-    border-radius: 20px;
+    border-radius: 25px;
     font-weight: 700;
     text-align: center;
     cursor: pointer;
     overflow: hidden;
-    transition: all 0.4s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.2),
+        0 5px 15px rgba(88, 51, 127, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     font-size: 1.1rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .filiale-card::before {
@@ -246,23 +330,96 @@ h3 {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 215, 0, 0.2),
+        rgba(255, 255, 255, 0.3),
+        transparent);
+    transition: left 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filiale-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg,
+        rgba(255, 215, 0, 0.3),
+        rgba(138, 43, 226, 0.2),
+        rgba(255, 20, 147, 0.3),
+        rgba(0, 191, 255, 0.2));
+    border-radius: 27px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 .filiale-card:hover::before {
     left: 100%;
 }
 
+.filiale-card:hover::after {
+    opacity: 1;
+}
+
 .filiale-card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    transform: translateY(-12px) scale(1.08) rotate(1deg);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.3),
+        0 10px 30px rgba(88, 51, 127, 0.4),
+        0 0 30px rgba(193, 39, 45, 0.3);
+    border-color: rgba(255, 215, 0, 0.5);
 }
 
 .filiale-card h4 {
     position: relative;
     z-index: 1;
     color: var(--gaki-white) !important;
+    text-shadow:
+        2px 2px 4px rgba(0, 0, 0, 0.8),
+        0 0 10px rgba(255, 255, 255, 0.3),
+        0 0 20px rgba(255, 215, 0, 0.2);
+    background: linear-gradient(135deg, #ffffff, #ffd700, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.3s ease;
+}
+
+.filiale-card:hover h4 {
+    text-shadow:
+        2px 2px 4px rgba(0, 0, 0, 0.8),
+        0 0 15px rgba(255, 255, 255, 0.5),
+        0 0 30px rgba(255, 215, 0, 0.4),
+        0 0 45px rgba(138, 43, 226, 0.3);
+}
+
+/* Images spécifiques pour chaque filiale */
+.filiale-card:nth-child(1) {
+    background-image: linear-gradient(rgba(88, 51, 127, 0.7), rgba(193, 39, 45, 0.7)), url("images/filiale-connect.jpg");
+}
+
+.filiale-card:nth-child(2) {
+    background-image: linear-gradient(rgba(88, 51, 127, 0.7), rgba(193, 39, 45, 0.7)), url("images/filiale-services.jpg");
+}
+
+.filiale-card:nth-child(3) {
+    background-image: linear-gradient(rgba(88, 51, 127, 0.7), rgba(193, 39, 45, 0.7)), url("images/filiale-industries.jpg");
+}
+
+.filiale-card:nth-child(4) {
+    background-image: linear-gradient(rgba(88, 51, 127, 0.7), rgba(193, 39, 45, 0.7)), url("images/filiale-logistics.jpg");
+}
+
+.filiale-card:nth-child(5) {
+    background-image: linear-gradient(rgba(88, 51, 127, 0.7), rgba(193, 39, 45, 0.7)), url("images/filiale-digital.jpg");
+}
+
+.filiale-card:nth-child(6) {
+    background-image: linear-gradient(rgba(88, 51, 127, 0.7), rgba(193, 39, 45, 0.7)), url("images/filiale-consulting.jpg");
 }
 
 /* Overlay text au hover */
@@ -288,14 +445,14 @@ h3 {
 }
 
 /* ================================
-   DOMAINES D’ACTIVITÉ
+   DOMAINES D’ACTIVITÉ ARTISTIQUES
 ================================ */
 .activity-card {
     background: linear-gradient(135deg, #f5f2fa, #f8f7fb);
     padding: 2.5rem;
     border-radius: 20px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid #e2e8f0;
     position: relative;
     overflow: hidden;
@@ -308,17 +465,46 @@ h3 {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(88, 51, 127, 0.05), transparent);
-    transition: left 0.6s;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(88, 51, 127, 0.08),
+        rgba(255, 215, 0, 0.05),
+        rgba(88, 51, 127, 0.08),
+        transparent);
+    transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.activity-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg,
+        rgba(255, 215, 0, 0.2),
+        rgba(138, 43, 226, 0.1),
+        rgba(255, 20, 147, 0.2),
+        rgba(0, 191, 255, 0.1));
+    border-radius: 22px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 .activity-card:hover::before {
     left: 100%;
 }
 
+.activity-card:hover::after {
+    opacity: 1;
+}
+
 .activity-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(88, 51, 127, 0.2);
+    transform: translateY(-10px) scale(1.03) rotate(-0.5deg);
+    box-shadow:
+        0 25px 50px rgba(88, 51, 127, 0.25),
+        0 0 30px rgba(255, 215, 0, 0.15);
 }
 
 .activity-card h3 {
@@ -327,6 +513,13 @@ h3 {
     font-weight: 600;
     position: relative;
     z-index: 1;
+    text-shadow: 0 0 10px rgba(88, 51, 127, 0.3);
+    transition: all 0.3s ease;
+}
+
+.activity-card:hover h3 {
+    color: var(--gaki-red);
+    text-shadow: 0 0 15px rgba(193, 39, 45, 0.4);
 }
 
 .activity-card p {
@@ -334,6 +527,12 @@ h3 {
     line-height: 1.6;
     position: relative;
     z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.activity-card:hover p {
+    color: var(--gaki-black);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 /* ================================
