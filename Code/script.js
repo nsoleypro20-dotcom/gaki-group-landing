@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
        PARALLAX EFFECT ON HERO
     ============================== */
     const heroBg = document.querySelector('.hero-bg');
-    const heroOverlay = document.querySelector('.hero-bg::before');
 
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
@@ -47,12 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (heroBg) {
             heroBg.style.transform = `translateY(${rate * 0.3}px)`;
-        }
-
-        // Apply parallax to the overlay as well
-        const overlay = heroBg.querySelector('::before');
-        if (overlay) {
-            overlay.style.transform = `translateY(${rate * 0.1}px)`;
         }
     });
 
