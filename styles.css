@@ -51,9 +51,14 @@ h3, h4 {
     font-weight: 400;
 }
 
-body, p, span, div {
+body, p, span, div{
     font-family: 'Arial', sans-serif;
     font-weight: 400;
+}
+ spanA  {
+    font-family: 'Arial', sans-serif;
+    font-weight: 400;
+    color: #6b1a84;
 }
 
 /* ================================
@@ -636,14 +641,51 @@ footer {
 @media (max-width: 1024px) {
     section { padding: 4rem 1.5rem; }
     section > div { padding: 2.5rem; }
+    .hero-bg { min-height: 80vh; }
+    .hero-bg h1 { font-size: 3rem; }
+    .hero-bg h2 { font-size: 1.5rem; }
+    .hero-bg p { font-size: 1rem; }
+    .filiale-card { padding: 2rem 1rem; }
+    .activity-card { padding: 2rem; }
 }
 
 @media (max-width: 768px) {
     .hero-bg h1 { font-size: 2.5rem; }
     .hero-bg h2 { font-size: 1.25rem; }
+    .hero-bg p { font-size: 0.9rem; }
+    section { padding: 3rem 1rem; }
+    section > div { padding: 2rem; }
+    .filiale-card { padding: 1.5rem 1rem; font-size: 0.9rem; }
+    .activity-card { padding: 1.5rem; }
+    .team-member { padding: 1.5rem; }
+    .project-card { padding: 1rem; }
+    .news-card { padding: 1rem; }
+    .stat-card { margin-bottom: 1rem; }
+    .value-card { padding: 1rem; }
+    h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+    .grid.grid-cols-1.md\:grid-cols-2 > div { margin-bottom: 1rem; }
 }
 
 @media (max-width: 480px) {
-    section { padding: 3rem 1rem; }
-    form { padding: 2rem; }
+    section { padding: 2rem 1rem; }
+    section > div { padding: 1.5rem; }
+    .hero-bg { min-height: 70vh; }
+    .hero-bg h1 { font-size: 2rem; }
+    .hero-bg h2 { font-size: 1rem; }
+    .hero-bg p { font-size: 0.8rem; }
+    .hero-bg a { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+    form { padding: 1.5rem; }
+    .filiale-card { padding: 1rem; font-size: 0.8rem; }
+    .activity-card { padding: 1rem; }
+    .team-member { padding: 1rem; }
+    .project-card { padding: 0.75rem; }
+    .news-card { padding: 0.75rem; }
+    .stat-card { margin-bottom: 0.75rem; }
+    .value-card { padding: 0.75rem; }
+    h2 { font-size: 1.75rem; margin-bottom: 1rem; }
+    h3 { font-size: 1.1rem; }
+    .grid.grid-cols-1.md\:grid-cols-2 > div { margin-bottom: 0.75rem; }
+    footer { padding: 2rem 1rem; }
+    .footer-section { margin-bottom: 1.5rem; }
 }
